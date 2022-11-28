@@ -17,7 +17,7 @@ public class DateUtils {
 
     private static final int yearLimit = 5000000;
 
-    public static final String[] units = new String[]{"year", "years", "month", "months", "day", "days", "hour", "hours", "minute", "minutes", "second", "seconds"};
+    public static final String[] units = new String[]{"year", "month", "day", "hour", "minute", "second", "years", "months", "days", "hours", "minutes", "seconds"};
 
     public static String removeTimePattern(final String input) {
         return timePattern.matcher(input).replaceFirst("").trim();
@@ -113,7 +113,7 @@ public class DateUtils {
             final int diff = dateDiff(types[i], fromDate, toDate, future);
             if (diff > 0) {
                 accuracy++;
-                builder.append(diff).append(units[i * 2 + (diff > 1 ? 1 : 0)]);
+                builder.append(diff).append(units[i + (diff > 1 ? 6 : 0)]);
             }
         }
         // Preserve correctness in the original date object by removing the extra buffer time
